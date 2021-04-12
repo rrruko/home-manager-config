@@ -1,4 +1,5 @@
 [
   ./xmonad
   ./kitty
+  ./bash
 ]
