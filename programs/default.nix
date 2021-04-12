@@ -3,4 +3,5 @@
   ./kitty
   ./bash
   ./xsession
+  ./polybar
 ]
