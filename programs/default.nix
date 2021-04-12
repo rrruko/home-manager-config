@@ -2,4 +2,5 @@
   ./xmonad
   ./kitty
   ./bash
+  ./xsession
 ]
