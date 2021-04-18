@@ -4,9 +4,11 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.FadeInactive
 import Codec.Binary.UTF8.String as UTF8
+import Graphics.X11.ExtraTypes.XF86
 
 import qualified DBus as D
 import qualified DBus.Client as D
+import qualified Data.Map as M
 
 main :: IO ()
 main = do
@@ -14,12 +16,20 @@ main = do
     { borderWidth = 0
     , layoutHook =
         avoidStruts .
-        spacingRaw True (Border 0 2 2 2) True (Border 2 2 2 2) True $
+        spacingRaw True (Border 0 bw bw bw) True (Border bw bw bw bw) True $
         layoutHook def
     , terminal = "kitty"
+    , keys = \c -> mykeys c `M.union` keys def c
     }
   where
+    bw = 8
     tall = Tall 1 (3/100) (1/2)
+    mykeys (XConfig {modMask = modm}) = M.fromList $
+      [ ((modm, xK_x), spawn "rofi -modi run -show")
+      , ((noModMask, xF86XK_AudioLowerVolume), spawn "amixer -q set Master 5%-")
+      , ((noModMask, xF86XK_AudioRaiseVolume), spawn "amixer -q set Master 5%+")
+      , ((modm, xK_m), spawn "maim -us --format png /dev/stdout | xclip -sel clipboard -t image/png")
+      ]
 
 mkDbusClient :: IO D.Client
 mkDbusClient = do

@@ -4,4 +4,6 @@
   ./bash
   ./xsession
   ./polybar
+  ./rofi
+  ./udiskie
 ]

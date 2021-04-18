@@ -7,19 +7,23 @@ let
     pulseSupport = true;
   };
 
-  xmonad = ''
-    [module/xmonad]
+  mprisScript = pkgs.callPackage ./scripts/mpris.nix {};
+  mpris = ''
+    [module/mpris]
     type = custom/script
-    exec = ${pkgs.xmonad-log}/bin/xmonad-log
-
+    exec = ${mprisScript}/bin/mpris
     tail = true
+    label-maxlen = 60
+    interval = 2
+    format =   <label>
   '';
 in
 {
   services.polybar = {
     enable = true;
     package = mypolybar;
-    extraConfig = builtins.readFile ./config.ini;
+    config = ./config.ini;
+    extraConfig = mpris;
     script = ''
       polybar top & disown
     '';

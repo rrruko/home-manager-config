@@ -8,6 +8,7 @@ in
     enable = true;
     initExtra = ''
       ${pkgs.feh}/bin/feh --bg-scale ${bunnypic}
+      kitty
     '';
   };
 }

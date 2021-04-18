@@ -1,5 +1,10 @@
 { config, pkgs, ... }:
 
+let 
+  polybarPkgs = with pkgs; [
+    font-awesome-ttf
+  ];
+in
 {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -18,5 +23,6 @@
   # the Home Manager release notes for a list of state version
   # changes in each release.
   home.stateVersion = "21.03";
+  home.packages = polybarPkgs;
   imports = import ./programs;
 }
