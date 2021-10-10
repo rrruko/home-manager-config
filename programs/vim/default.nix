@@ -39,6 +39,10 @@
 
       set undolevels=1000
       set backspace=indent,eol,start
+
+      " Workaround for kitty background color rendering issue
+      " https://github.com/kovidgoyal/kitty/issues/108
+      let &t_ut='''
     '';
   };
 }
