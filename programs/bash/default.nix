@@ -14,6 +14,7 @@
       "gp" = "git push";
       "gpl" = "git pull";
       "gs" = "git status";
+      "gsh" = "git show";
     };
   };
 }
