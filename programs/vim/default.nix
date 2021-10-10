@@ -4,10 +4,13 @@
     enable = true;
     plugins = with pkgs.vimPlugins; [ sonokai ];
     extraConfig = ''
-      " calling packadd! to silence startup error messages here, see:
-      " https://github.com/sainnhe/sonokai/blob/81e19fc3db1af37ec5acf2d7cb11b97ae48c34b6/doc/sonokai.txt#L409a
-      " > You'll need to add `packadd! sonokai` before applying this color scheme.
-      " > Check [sainnhe/gruvbox-material#60](https://github.com/sainnhe/gruvbox-material/issues/60)
+      " Need to call packadd! to silence startup error messages here, see:
+      " https://github.com/sainnhe/sonokai/blob/
+      " 81e19fc3db1af37ec5acf2d7cb11b97ae48c34b6/doc/sonokai.txt#L409a
+      " > You'll need to add `packadd! sonokai` before applying this
+      " > color scheme.
+      " > Check [sainnhe/gruvbox-material#60]
+      " > (https://github.com/sainnhe/gruvbox-material/issues/60)
       packadd! sonokai
 
       if has('termguicolors')
