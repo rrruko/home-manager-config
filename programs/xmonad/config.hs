@@ -1,6 +1,6 @@
 -- You can edit this by entering a nix shell:
--- $ nix-shell -p ghcid "haskellPackages.ghcWithPackages (p: [ p.xmonad
---   p.xmonad-contrib p.containers ])"
+-- $ nix-shell
+-- $ ghcid config.hs
 
 import XMonad
 import XMonad.Layout.Spacing
