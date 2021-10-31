@@ -20,6 +20,7 @@ myKeys XConfig { XMonad.modMask = modm } = Map.fromList
   [ ((0, audioLowerVolume), spawn "amixer -q sset Master 5%-")
   , ((0, audioRaiseVolume), spawn "amixer -q sset Master 5%+")
   , ((0, audioMute), spawn "amixer set Master toggle")
+  , ((0, xK_Print), spawn "maim -ust 99999 | xclip -sel clipboard -t image/png")
   ]
   where
     audioLowerVolume = 0x1008ff11
