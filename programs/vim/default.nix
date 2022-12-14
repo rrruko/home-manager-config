@@ -46,6 +46,9 @@
 
       " strip trailing whitespace for certain filetypes
       autocmd BufWritePre *.hs,*.c,*.cpp,*.h,*.hpp,*.rs,*.cabal,*.nix,*.project %s/\s\+$//e
+
+      " set relative line numbers
+      set number relativenumber
     '';
   };
 }
