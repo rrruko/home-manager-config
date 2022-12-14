@@ -43,6 +43,9 @@
       " Workaround for kitty background color rendering issue
       " https://github.com/kovidgoyal/kitty/issues/108
       let &t_ut='''
+
+      " strip trailing whitespace for certain filetypes
+      autocmd BufWritePre *.hs,*.c,*.cpp,*.h,*.hpp,*.rs,*.cabal,*.nix,*.project %s/\s\+$//e
     '';
   };
 }
