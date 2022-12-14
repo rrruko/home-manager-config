@@ -15,6 +15,7 @@
       "gpl" = "git pull";
       "gs" = "git status";
       "gsh" = "git show";
+      "ssh" = "TERM=xterm-256color ssh";
     };
   };
 }
