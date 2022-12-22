@@ -4,4 +4,5 @@
   ./bash
   ./xsession
   ./vim
+  ./rofi
 ]
