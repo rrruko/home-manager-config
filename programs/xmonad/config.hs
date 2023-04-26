@@ -3,12 +3,13 @@
 -- $ ghcid config.hs
 
 import XMonad
+import XMonad.Hooks.EwmhDesktops (ewmh, ewmhFullscreen)
 import XMonad.Layout.Spacing
 import qualified Data.Map as Map
 
 main :: IO ()
 main = do
-  xmonad $ def
+  xmonad $ ewmhFullscreen $ ewmh def
     { borderWidth = 0
     , layoutHook = spacingRaw True (Border 0 2 2 2) True (Border 2 2 2 2) True $ layoutHook def
     , terminal = "kitty"
