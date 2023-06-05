@@ -12,7 +12,7 @@
        , border = FullB
        , bgColor = "black"
        , fgColor = "whitesmoke"
-       , alpha = 128
+       , alpha = 255
        , position = Top
        , textOffset = -1
        , iconOffset = -1
@@ -24,14 +24,12 @@
        , allDesktops = True
        , overrideRedirect = True
        , textOutputFormat = Ansi
-       , commands = [ Run Weather "EGPF" ["-t","<station>: <tempC>C",
-                                          "-L","18","-H","25",
+       , commands = [ Run Weather "KSEA" ["-t","<station>: <tempF>F",
+                                          "-L","50","-H","80",
                                           "--normal","green",
                                           "--high","red",
                                           "--low","lightblue"] 36000
-                    , Run Network "eth0" ["-L","0","-H","32",
-                                          "--normal","green","--high","red"] 10
-                    , Run Network "eth1" ["-L","0","-H","32",
+                    , Run Network "enp5s0" ["-L","0","-H","32",
                                           "--normal","green","--high","red"] 10
                     , Run Cpu ["-L","3","-H","50",
                                "--normal","green","--high","red"] 10
@@ -42,8 +40,8 @@
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%cpu% | <box>%memory% * %swap%</box> | %eth0% - %eth1% }\
-                    \{ <fc=#ee9a00><fn=1>%date%</fn></fc>| %EGPF% | %uname%"
+       , template = "%cpu% | <box>%memory% * %swap%</box> | %enp5s0% }\
+                    \{ <fc=#ee9a00><fn=1>%date%</fn></fc>| %KSEA% | %uname%"
        }
     '';
   };
