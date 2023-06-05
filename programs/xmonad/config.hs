@@ -4,17 +4,25 @@
 
 import XMonad
 import XMonad.Hooks.EwmhDesktops (ewmh, ewmhFullscreen)
+import XMonad.Hooks.ManageDocks (avoidStruts, docks)
 import XMonad.Layout.Spacing
 import qualified Data.Map as Map
 
 main :: IO ()
 main = do
-  xmonad $ ewmhFullscreen $ ewmh def
+  xmonad $ docks $ ewmhFullscreen $ ewmh def
     { borderWidth = 0
-    , layoutHook = spacingRaw True (Border 0 2 2 2) True (Border 2 2 2 2) True $ layoutHook def
+    , layoutHook = myLayout
     , terminal = "kitty"
     , keys = myKeys <> keys def
     }
+
+-- XMonad's layoutHook has a nasty type that gets bigger as you add more stuff.
+-- It's really better to just let GHC infer it.
+myLayout
+  = avoidStruts
+  . spacingRaw True (Border 0 2 2 2) True (Border 2 2 2 2) True
+  $ layoutHook def
 
 myKeys :: XConfig l -> Map.Map (ButtonMask, KeySym) (X ())
 myKeys XConfig { XMonad.modMask = modm } = Map.fromList

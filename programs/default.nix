@@ -5,4 +5,5 @@
   ./xsession
   ./vim
   ./rofi
+  ./xmobar
 ]
