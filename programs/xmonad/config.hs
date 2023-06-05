@@ -7,9 +7,11 @@ import XMonad.Hooks.EwmhDesktops (ewmh, ewmhFullscreen)
 import XMonad.Hooks.ManageDocks (avoidStruts, docks)
 import XMonad.Layout.Spacing
 import qualified Data.Map as Map
+import XMonad.Util.Run (spawnPipe)
 
 main :: IO ()
 main = do
+  _ <- spawnPipe "xmobar"
   xmonad $ docks $ ewmhFullscreen $ ewmh def
     { borderWidth = 0
     , layoutHook = myLayout
