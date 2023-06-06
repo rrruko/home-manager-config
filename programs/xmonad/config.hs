@@ -3,20 +3,24 @@
 -- $ ghcid config.hs
 
 import XMonad
+import XMonad.Hooks.DynamicLog (dynamicLogWithPP, PP(..))
 import XMonad.Hooks.EwmhDesktops (ewmh, ewmhFullscreen)
 import XMonad.Hooks.ManageDocks (avoidStruts, docks)
 import XMonad.Layout.Spacing
 import qualified Data.Map as Map
-import XMonad.Util.Run (spawnPipe)
+import XMonad.Util.Run (hPutStrLn, spawnPipe)
 
 main :: IO ()
 main = do
-  _ <- spawnPipe "xmobar"
+  xmobarHandle <- spawnPipe "xmobar"
   xmonad $ docks $ ewmhFullscreen $ ewmh def
     { borderWidth = 0
     , layoutHook = myLayout
     , terminal = "kitty"
     , keys = myKeys <> keys def
+    , logHook = dynamicLogWithPP def
+        { ppOutput = hPutStrLn xmobarHandle
+        }
     }
 
 -- XMonad's layoutHook has a nasty type that gets bigger as you add more stuff.

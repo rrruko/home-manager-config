@@ -38,10 +38,11 @@
                      , Run Swap [] 10
                      , Run Com "uname" ["-s","-r"] "" 36000
                      , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
+                     , Run StdinReader
                      ]
         , sepChar = "%"
         , alignSep = "}{"
-        , template = "%cpu% | <box>%memory% * %swap%</box> | %enp5s0% }\
+        , template = "%StdinReader% | %cpu% | <box>%memory% * %swap%</box> | %enp5s0% }\
                      \{ <fc=#ee9a00><fn=1>%date%</fn></fc>| %KSEA% | %uname%"
         }
     '';
