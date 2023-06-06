@@ -20,6 +20,11 @@ main = do
     , keys = myKeys <> keys def
     , logHook = dynamicLogWithPP def
         { ppOutput = hPutStrLn xmobarHandle
+        , ppOrder = \items ->
+            case items of
+              -- drop the layout
+              (workspaces : _layout : title : _) -> [workspaces, title]
+              xs -> xs
         }
     }
 
